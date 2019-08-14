@@ -17,13 +17,13 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
 
             $table->bigInteger('user_id')->unsigned()->index();
-            $table->integer('date')->nullable();
-            $table->integer('departure_time');
-            $table->integer('arrival_time');
-            $table->integer('mileaage');
-            $table->integer('driving_time');
+            $table->date('date')->nullable();
+            $table->time('departure_time')->nullable();
+            $table->time('arrival_time')->nullable();
+            $table->text('mileage')->nullable();
+            $table->time('driving_time')->nullable();
             $table->string('impression')->nullable();
-            $table->string('map');
+            $table->string('map')->nullable();
             $table->string('private')->default('public');
            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
