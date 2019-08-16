@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\PostReuest;
+
+use App\User;
 use App\Post;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        $posts->load('user');
-        // dd($posts);
-        
-        return view('posts.index', [
-            'posts' => $posts,
-      ]);
+        //
     }
 
     /**
@@ -31,9 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create', [
-
-        ]);
+        //
     }
 
     /**
@@ -42,15 +35,9 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostReuest $request)
+    public function store(Request $request)
     {
-        $post = new Post;
-        $input = $request->only($post->getFillable());
-
-        $post = $post->create($input);
-
-        return redirect('/');
-
+        //
     }
 
     /**
@@ -59,13 +46,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(User $user)
     {
-        $post->load('user');
-
-        return view('posts.show', [
-            'post' => $post,
-            
+        $user = User::find($user->id);
+        
+        // $user->load('posts');
+        return view('users.show', [
+            'user' =>$user,
         ]);
     }
 
@@ -75,9 +62,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit',['user' => $user]);
     }
 
     /**
@@ -87,9 +74,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->name;
+        $user->image = $request->image;
+        $user->age = $request->age;
+        $user->sex = $request->sex;
+        $user->twitter_link;
+        $user->region;
+        $user->save();
+        return redirect('users/'.$user->id);
     }
 
     /**
@@ -98,10 +92,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(User $user)
     {
-        Post::find($id)->delete();
-
-        return redirect('/');
+        $user->delete();
+        return redirect('users');
     }
 }

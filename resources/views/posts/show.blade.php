@@ -14,5 +14,7 @@
   <p>{{ $post->user->name }}</p>
     </div>
  </div>
+
+ </div>
  
  @endsection

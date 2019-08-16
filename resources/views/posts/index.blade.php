@@ -13,15 +13,22 @@
 <div class="card">
     
     <div class="card-body">
+        
         <h5 class="card-title">{{ $post->title }}</h5>
-
         <h5 class="card-title">
-            投稿者:{{ $post->user->name }}
+            投稿者:
+            <a href="{{ route('users.show', $post)  }}">  {{ $post->user->name }}</a>
+
         </h5>
         
         <p class="card-text">{{ $post->content }}</p>
         <p>{{ $post->user->name }}</p>
         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">詳細</a>
+        <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            <input type="submit" value="削除" class="btn btn-danger" onclick='return confirm("本当に削除しますか？");'>
+        </form>
     </div>
     </div>
     @endforeach

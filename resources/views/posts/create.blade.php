@@ -45,7 +45,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">map</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="title" name="map">
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="iframe tag" name="map">
             </div>
 
             
