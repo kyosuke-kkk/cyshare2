@@ -3,22 +3,22 @@
 
 
 @section('content')
+
 <div class="card-body">
 <h5 class="card-title">{{ $user->name }}</h5>
-<h5 class="card-title">{{ $user->image }}</h5>
+<img src="{{ $user->image }}" alt="" title="">
 <h5 class="card-title">{{ $user->age }}</h5>
 <h5 class="card-title">{{ $user->sex }}</h5>
 <h5 class="card-title">{{ $user->twitter_link }}</h5>
 <h5 class="card-title">{{ $user->region }}</h5>
          <h5 class="card-title">
-              ポスト:{{ $user->title }}
          </h5>
          <h5 class="card-title">
-          投稿者:{{ $user->name }}
          </h5>
       <p class="card-text">{{ $user->content }}</p>
-  <p>{{ $user->name }}</p>
-  <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">詳細</a>
+ @if($user->id == Auth::id() )
+  <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">編集</a>
+  @endif
     </div>
  </div>
  

@@ -23,11 +23,11 @@ class CreatePostsTable extends Migration
             $table->text('mileage')->nullable();
             $table->time('driving_time')->nullable();
             $table->string('impression')->nullable();
-            $table->string('map')->nullable();
+            $table->longtext('map')->nullable();
             $table->string('private')->default('public');
-           
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-           
+            
             $table->timestamps();
         });
     }

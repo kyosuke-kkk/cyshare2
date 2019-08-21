@@ -55,7 +55,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('posts.create') }}" class="item">投稿する</a>
+                                    <a class="dropdown-item" href="{{ route('posts.create') }}" class="item">投稿</a>
+                                    <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}" class="item">詳細</a>
+                                    <a class="dropdown-item" href="{{ route('users.record') }}" class="item">記録</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

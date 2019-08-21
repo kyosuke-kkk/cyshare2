@@ -48,13 +48,20 @@
                 <input type="text" class="form-control" id="exampleInputEmail1" placeholder="iframe tag" name="map">
             </div>
 
-            
+            <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="private" id="defaultCheck1" name="private">
+  <label class="form-check-label" for="defaultCheck1">
+    private
+  </label>
+</div>
 
         
         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
         
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
+        
 
         </div>
     </div>

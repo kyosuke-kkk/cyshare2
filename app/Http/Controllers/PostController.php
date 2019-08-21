@@ -15,8 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('private','public')->get();
         $posts->load('user');
+        
         // dd($posts);
         
         return view('posts.index', [

@@ -8,7 +8,7 @@ class Post extends Model
 {
     
     protected $fillable = [
-        'user_id','date','departure_time','arrival_time','mileaage','driving_time','impression','map','private'
+        'user_id','date','departure_time','arrival_time','mileage','driving_time','impression','map','private'
     ];
 
     public function user(){

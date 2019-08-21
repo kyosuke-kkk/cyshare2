@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Post;
+use Auth;
+use JD\Cloudder\Facades\Cloudder;
+
+
 
 class UserController extends Controller
 {
@@ -52,7 +56,7 @@ class UserController extends Controller
         
         // $user->load('posts');
         return view('users.show', [
-            'user' =>$user,
+            'user' => $user,
         ]);
     }
 
@@ -77,11 +81,26 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->name = $request->name;
-        $user->image = $request->image;
+        if (!empty($request->image)){
+            $image = $request->image;
+            $image_name = $image->getRealPath();
+            Cloudder::upload($image_name, null);
+            list($width, $height) = getimagesize($image_name);
+        // 直前にアップロードした画像のユニークIDを取得します。
+        $publicId = Cloudder::getPublicId();
+        // URLを生成します
+        $imageUrl = Cloudder::show($publicId,[
+            'width'     => $width,
+            'height'    => $height
+        ]);
+        $user->image = $imageUrl;
+        $user->save();
+        }
+       
         $user->age = $request->age;
         $user->sex = $request->sex;
-        $user->twitter_link;
-        $user->region;
+        $user->twitter_link = $request->twitter_link;
+        $user->region = $request->region;
         $user->save();
         return redirect('users/'.$user->id);
     }
@@ -97,4 +116,15 @@ class UserController extends Controller
         $user->delete();
         return redirect('users');
     }
+
+    public function record(User $user)
+    {
+        $login_id = Auth::id();
+        $posts = Post::whereIn('user_id', [$login_id])->get();
+        // $posts->load('post');
+        return view('users.record',[
+        'posts' => $posts,
+        ]);
+    }
 }
+
