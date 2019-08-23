@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostReuest;
 use App\Post;
 
+
 class PostController extends Controller
 {
     /**
@@ -15,7 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('private','public')->get();
+
+        $posts = Post::where('private','public')->orderBy('id','desc')->get();
         $posts->load('user');
         
         // dd($posts);

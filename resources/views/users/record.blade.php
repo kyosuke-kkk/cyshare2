@@ -20,9 +20,20 @@
             <a href="{{ route('users.show', $post->user_id)  }}">  {{ $post->user->name }}</a>
 
         </h5>
+        {{ $post->date }}
+        <br>
+       {{ $post->departure_time }}
+       <br>
+       {{ $post->arrival_time }}
+       <br>
+       {{ $post->mileage }}
+       <br>
+       {{ $post->driving_time }}
+       <br>
+       {!! $post->map !!}
+       <br>
         
         <p class="card-text">{{ $post->content }}</p>
-        <p>{{ $post->user->name }}</p>
         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">詳細</a>
         @if($post->user_id == Auth::id() )
         <form method="POST" action="{{ route('posts.destroy', $post->id) }}">

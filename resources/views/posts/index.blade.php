@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card-header">board</div>
+<div class="card-header">投稿一覧</div>
 <div class="card-body">
 @if (session('status'))
     <div class="alert alert-success" role="alert">
@@ -16,26 +16,24 @@
         
         <h5 class="card-title"></h5>
         <h5 class="card-title">
-            投稿者:
+        投稿者
             <a href="{{ route('users.show', $post->user_id)  }}">  {{ $post->user->name }}</a>
 
         </h5>
 
-        {{ $post->date }}
+        <h6>日付   {{ $post->date }}</h6>
         <br>
-       {{ $post->departure_time }}
+       <h6>出発時間   {{ $post->departure_time }}</h6>
        <br>
-       {{ $post->arrival_time }}
+       <h6>到着時間   {{ $post->arrival_time }}</h6>
        <br>
-       {{ $post->mileage }}
+       <h6>走行距離   {{ $post->mileage }}</h6>
        <br>
-       {{ $post->driving_time }}
+       <h6>所要時間   {{ $post->driving_time }}</h6>
        <br>
-       {!! $post->map !!}
+       <h6>地図   {!! $post->map !!}</h6>
        <br>
         <p class="card-text">{{ $post->content }}</p>
-        <p>{{ $post->user->name }}</p>
-        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">詳細</a>
         @if($post->user_id == Auth::id() )
         <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
             {{ csrf_field() }}

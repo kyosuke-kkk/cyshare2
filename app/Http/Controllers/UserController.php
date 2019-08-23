@@ -68,7 +68,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $login_id = Auth::id();
+        if($user->id == $login_id){
         return view('users.edit',['user' => $user]);
+    }
+    abort(403);
     }
 
     /**
