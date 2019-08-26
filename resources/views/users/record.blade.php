@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card-header">board</div>
+<div class="card-header">自己一覧</div>
 <div class="card-body">
 @if (session('status'))
     <div class="alert alert-success" role="alert">
@@ -20,17 +20,17 @@
             <a href="{{ route('users.show', $post->user_id)  }}">  {{ $post->user->name }}</a>
 
         </h5>
-        {{ $post->date }}
+        日付　　{{ $post->date }}
         <br>
-       {{ $post->departure_time }}
+       出発時間　　{{ $post->departure_time }}
        <br>
-       {{ $post->arrival_time }}
+       到着時間　　{{ $post->arrival_time }}
        <br>
-       {{ $post->mileage }}
+       走行距離　　{{ $post->mileage }}
        <br>
-       {{ $post->driving_time }}
+       所要時間　　{{ $post->driving_time }}
        <br>
-       {!! $post->map !!}
+       地図{!! $post->map !!}
        <br>
         
         <p class="card-text">{{ $post->content }}</p>

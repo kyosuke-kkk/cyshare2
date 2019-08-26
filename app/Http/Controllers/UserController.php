@@ -130,5 +130,10 @@ class UserController extends Controller
         'posts' => $posts,
         ]);
     }
+
+    public function how_to()
+    {
+        return view('users.how_to');
+    }
 }
 

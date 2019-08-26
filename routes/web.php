@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/posts/create', 'PostController@create')->name('posts.create')->middleware('auth');
 Route::get('/', 'PostController@index')->name('posts.index');
 Route::get('record', 'UserController@record')->name('users.record');
+Route::get('how_to','UserController@how_to')->name('users.how_to');
 
 Route::resource('posts','PostController', ['except' => ['index','create']]);
 Route::resource('users','UserController');

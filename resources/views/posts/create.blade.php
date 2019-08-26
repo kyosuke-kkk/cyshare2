@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card-header">board</div>
+<div class="card-header">投稿画面</div>
 <div class="card-body">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <div class="card">
+    <div class="card create_card">
         <div class="card-body">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">mileage</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="title" name="mileage">
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="mileage" name="mileage">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">driving_time</label>
@@ -58,7 +58,7 @@
         
         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
         
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-dark">Write a post</button>
         </form>
         
 

@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/design.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -56,8 +57,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('posts.create') }}" class="item">投稿</a>
-                                    <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}" class="item">詳細</a>
-                                    <a class="dropdown-item" href="{{ route('users.record') }}" class="item">記録</a>
+                                    <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}" class="item">プロフィール詳細</a>
+                                    <a class="dropdown-item" href="{{ route('users.record') }}" class="item">自己走行記録</a>
+                                    <a class="dropdown-item" href="{{ route('users.how_to') }}" class="item">使い方</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -67,6 +69,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+
                                 </div>
                             </li>
                         @endguest

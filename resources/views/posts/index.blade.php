@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
+
 @section('content')
-<div class="card-header">投稿一覧</div>
+<div class="card-header index_card-hearder"><font color="#ffffff">投稿一覧</font></div>
 <div class="card-body">
 @if (session('status'))
     <div class="alert alert-success" role="alert">
@@ -10,7 +11,7 @@
 @endif
 
 @foreach($posts as $post)
-<div class="card">
+<div class="card index_card">
     
     <div class="card-body">
         
@@ -31,7 +32,7 @@
        <br>
        <h6>所要時間   {{ $post->driving_time }}</h6>
        <br>
-       <h6>地図   {!! $post->map !!}</h6>
+       地図   {!! $post->map !!}
        <br>
         <p class="card-text">{{ $post->content }}</p>
         @if($post->user_id == Auth::id() )

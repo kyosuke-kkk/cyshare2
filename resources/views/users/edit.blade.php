@@ -18,7 +18,7 @@
             <label for="region">{{ __('Region') }}</label>
             <input id="region" type="text" class="form-control" name="region" value="{{ $user->region }}" required autofocus>
         </div>
-        <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="submit" name="submit" class="btn btn-primary">{{ __('決定') }}</button>
     </form>
 </div>
 @endsection
